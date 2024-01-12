@@ -125,7 +125,7 @@ export default function Home() {
               Waiting to generate response...
             </div>
           )}
-          {response && (
+          {response && !loading && (
             <Markdown
               className={cn("w-full h-full ")}
             >{`${response}`}</Markdown>

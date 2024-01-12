@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const modelVersion = 'gemini-pro'
+// const modelVersion = 'gemini-pro-vision'
 
 export async function POST(req: NextRequest) {
   const reqBody = await req.json()
@@ -16,8 +17,8 @@ export async function POST(req: NextRequest) {
   try {
     const result = await model.generateContent(prompt)
     const response = await result.response
+    console.log('---response:', response);
     const text = response.text()
-    console.log('---text:', text);
     return NextResponse.json({
       text
     })
